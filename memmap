@@ -1,6 +1,7 @@
 MEMORY
 {
-    ram(rwx) : ORIGIN = 0x0, LENGTH = 0x20000
+    ram(rwx) : ORIGIN = 0x0, LENGTH = 0x10000
+    /* ram(rwx) : ORIGIN = 0x0, LENGTH = 0x80000 */
 }
 SECTIONS
 {
@@ -34,6 +35,6 @@ SECTIONS
     } > ram
 
     __StackTop = ORIGIN(ram) + LENGTH(ram);
-    __StackLimit = __StackTop - 0x2000;
+    __StackLimit = __StackTop - 0x1000;
     ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed")
 }
